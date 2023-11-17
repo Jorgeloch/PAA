@@ -15,7 +15,7 @@ int main (void)
   fgets(str, 200, stdin);
   while (*curr != '\0')
   {
-    switch (*curr)
+    switch (tolower(*curr))
     {
       case 'a':
         counter[a]++;
