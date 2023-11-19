@@ -8,7 +8,7 @@ int main (void)
   scanf("%i", &n);
 
   // dynamically allocating matrix
-  float *matrix[n];
+  float **matrix = (float **) malloc(n * sizeof(float *));
   for (int i = 0; i < n; i++)
   {
     matrix[i] = (float *)  malloc(n * sizeof(float));
@@ -20,14 +20,13 @@ int main (void)
     for (int j = 0; j < n; j++)
     {
       scanf("%f", &matrix[i][j]);
-      printf("matrix[%i][%i] = %f\n", i, j, matrix[i][j]);
     }
   }
 
   printf("tr(A) = ");
   
   float result = 0;
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n - 1; i++)
   {
     result += matrix[i][i];
     printf("(%.2f) + ", matrix[i][i]);
@@ -39,4 +38,6 @@ int main (void)
   {
     free(matrix[i]);
   }
+  free(matrix);
+  return 0;
 }
