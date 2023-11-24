@@ -76,10 +76,10 @@ double calcula_consumo (consumo *consumo_medio, int n_consumos)
   int total_moradores = 0;
   for (int i = 0; i < n_consumos; i++)
   {
-    total_consumo += consumo_medio[i].consumo_medio;
+    total_consumo += consumo_medio[i].consumo_medio * consumo_medio[i].n_moradores;
     total_moradores += consumo_medio[i].n_moradores;
   }
-  return round (total_consumo / total_moradores);
+  return floor (total_consumo / total_moradores);
 }
 
 void print_consumos(consumo *consumo_medio, int n_consumos)
