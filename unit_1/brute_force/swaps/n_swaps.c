@@ -40,4 +40,5 @@ int main (void)
   }
   int swaps = bubble_sort(array, n);
   printf("%i\n", swaps);
+  free(array);
 }
