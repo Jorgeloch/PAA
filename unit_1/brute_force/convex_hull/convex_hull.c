@@ -92,16 +92,31 @@ void insert(linked_list* list, coordinate value)
     return;
   }
   node* curr = list->start;
-  while (curr->p.x < value.x && curr->next != NULL)
+  node* prev = NULL;
+  node* first_stop_x = NULL;
+  while (curr != NULL && curr->p.x <= new->p.x)
   {
+    prev = curr;
+    first_stop_x = curr;
     curr = curr->next;
   }
-  while (curr->p.x > value.x && curr->p.y < value.y && curr->next != NULL)
+  if (first_stop_x)
   {
-    curr = curr->next;
+    while (curr != NULL && curr->p.y <= new->p.y && first_stop_x->p.x == curr->p.x)
+    {
+      prev = curr;
+      curr = curr->next;
+    }
   }
-  new->next = curr->next;
-  curr->next = new;
+  if (!prev)
+  {
+    new->next = curr;
+    list->start = new;
+    list->size++;
+    return;
+  }
+  new->next = curr;
+  prev->next = new;
   list->size++;
   return;
 }
