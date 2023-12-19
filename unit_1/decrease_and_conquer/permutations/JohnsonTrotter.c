@@ -121,9 +121,9 @@ bool hasMobileElement(element* array, int size, int* position_of_element)
   for (int i = 0; i < size; i++)
   {
     int next = i + array[i].d;
-    if (array[i].value > max_mobile_value && array[i].value > array[next].value)
+    if (!((i == 0 && array[i].d == LEFT) || (i == size - 1 && array[i].d == RIGHT)))
     {
-      if (!((i == 0 && array[i].d == LEFT) || (i == size - 1 && array[i].d == RIGHT)))
+      if (array[i].value > max_mobile_value && array[i].value > array[next].value)
       {
         max_mobile_value = array[i].value;
         *position_of_element = i;

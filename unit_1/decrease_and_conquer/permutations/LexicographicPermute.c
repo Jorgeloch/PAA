@@ -136,7 +136,7 @@ int searchSwapPosition(int* array, int from, int size)
   int pos = from + 1;
   int reference = array[from];
 
-  while (array[pos + 1] > reference && pos < size - 1)
+  while (pos < size - 1 && array[pos + 1] > reference)
   {
     pos++;  
   }
