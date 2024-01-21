@@ -115,6 +115,7 @@ int main() {
 
   //verificação de mudança mínima
   int tam = pot(n, n);
+
   for (int i = 1; i<tam; i++)
     if ( difs(funs[i-1],funs[i], n) !=1 ) {
       printf("No minimal change\n");
